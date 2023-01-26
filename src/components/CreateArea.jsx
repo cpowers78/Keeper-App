@@ -1,44 +1,67 @@
-import React, { useState } from "react";
-import App from "./App";
-
-
-var note_array = [];
+import React, {useState} from "react";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import Fab from '@mui/material/Fab';
+import Zoom from '@mui/material/Zoom';
 
 function CreateArea(props) {
 
-    const [note, setNote] = useState({
-        title: "",
-        content: ""
+  const [isExpanded, setExpanded] = useState(false)
+
+  const [inputText, setInputText] = useState({
+    title: "",
+    content: ""
+  });
+
+
+  function handleChange(event){
+    const {name, value} = event.target;
+    
+    setInputText(prevInputText => {
+      return{
+        ...prevInputText,
+        [name]: value
+      };
     });
+  }
 
- 
-    function handleChange(event) {
-        const { name, value } = event.target;
-    
-        setNote(prevNote => {
-          return {
-            ...prevNote,
-            [name]: value
-          };
-        });
-      }
+  
+  function submitNote(event) {
+    props.onAdd(inputText);
+    setInputText({
+      title: "",
+      content: ""
+    });
+    event.preventDefault();
+  }
 
-      function submitNote(event){
-        props.onAdd(note);
-        event.preventDefault();
-
-      }
-    
-    return (
+  function expand(){
+    setExpanded(true);
+  }
+  return (
     <div>
-      <form>
-        <input name="title" onChange={handleChange} value={note.title} placeholder="Title" />
-        <textarea name="content" onChange={handleChange} value={note.content} placeholder="Take a note..." rows="3" />
-        <button onClick={submitNote}>Add</button>
+      <form className="create-note">
+      {isExpanded ?   <input
+          name="title"
+          onChange={handleChange}
+          value={inputText.title}
+          placeholder="Title"
+        />: null}
+       <textarea
+          onClick={expand}
+          name="content"
+          onChange={handleChange}
+          value={inputText.content}
+          placeholder="Take a note..."
+          rows={isExpanded ? "3" : "1"}
+        />
+        <Zoom in={isExpanded ? true : false}>
+        <Fab onClick={submitNote}><AddCircleOutlineIcon /></Fab>
+        </Zoom>
       </form>
     </div>
   );
 }
 
-
 export default CreateArea;
+
+

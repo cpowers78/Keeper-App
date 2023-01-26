@@ -7,30 +7,43 @@ import CreateArea from "./CreateArea"
 
 
 function App() {
+    const [noteItems, setnoteItems] = useState([]);
 
-    const [notes, setNotes] = useState([]);
-    
-    function addNote(new_note){
-        setNotes(prevNotes => {
-            return [...prevNotes, new_note];
-        })
+    function addNote(inputText){
+        setnoteItems((prevnoteItems) => {
+            return [...noteItems, inputText];
+        });
     }
+
+    function deleteNote(id){
+        setnoteItems(prevnoteItems => {
+            return prevnoteItems.filter(
+                (note, index) => {
+                    return index != id;
+                }
+            );
+        });
+    }
+  
     return (
-        <div>
-        <Header />
-        <Footer /> 
-        <CreateArea onAdd={addNote}/>
-        {notes.map((noteItem) => {
-            return <Note
-            title={noteitem.title}
-            content={noteitem.content}
-
-            />
-        })}
-        </div>
-    );
+    <div>
+      <Header />
+      <CreateArea onAdd={addNote}/>
+      {noteItems.map((noteItem, index) => {
+        return (
+          <Note
+            key={index}
+            id={index}
+            title={noteItem.title}
+            content={noteItem.content}
+            onPress={deleteNote}
+          />
+        );
+      })}
+        <Footer />
+    </div>
+  );
 }
-
 
 export default App;
 
