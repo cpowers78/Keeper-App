@@ -7,20 +7,20 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 body {
-  background: #eee;
+  background: #e0fbfc;
   padding: 0 16px;
-  background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");
+  background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
 }
 
 header {
-  background-color: #f5ba13;
+  background-color: #ee6c4d;
   margin: auto -16px;
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
-  color: #fff;
+  color: #e0fbfc;
   font-family: "McLaren", cursive;
   font-weight: 200;
 }
@@ -48,20 +48,23 @@ footer p {
 .note h1 {
   font-size: 1.1em;
   margin-bottom: 6px;
+  color: #293241;
 }
 .note p {
   font-size: 1.1em;
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
+  color: #293241;
 }
 
 .note button {
   position: relative;
   float: right;
   margin-right: 10px;
-  color: #f5ba13;
+  color: #ee6c4d;
   border: none;
+  border-radius: 50%;
   width: 36px;
   height: 36px;
   cursor: pointer;
@@ -86,12 +89,13 @@ form.create-note textarea {
   font-size: 1.2em;
   font-family: inherit;
   resize: none;
+  color: #293241;
 }
 form.create-note button {
   position: absolute;
   right: 18px;
   bottom: -18px;
-  background: #f5ba13;
+  background: #ee6c4d;
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -101,3 +105,44 @@ form.create-note button {
   cursor: pointer;
   outline: none;
 }
+
+img {
+  max-width: 100px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+
+}
+
+
+
+/* .custom-file-upload {
+  display: inline-block;
+  /* padding: 10px 20px;
+  cursor: pointer; */
+/* }
+
+.custom-file-upload:before {
+  content: 'Upload Image';
+  background: #0074D9;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.custom-file-upload:hover:before {
+  background: #0088cc;
+} */ 
+
+.container-class {
+  margin-left: -5px;
+}
+
+.container-class .file-button{
+  position:absolute;
+  left: 10px;
+  margin-right: 1000px;
+  color:orange;
+}
+

@@ -6,14 +6,30 @@ import CreateArea from "./CreateArea"
 
 
 
+
 function App() {
     const [noteItems, setnoteItems] = useState([]);
 
+    // function addNote(inputText){
+    //   const fileURL = URL.createObjectURL(inputText.image);
+    //   setnoteItems(prevnoteItems => {
+    //     return [...prevnoteItems, {...inputText, fileURL}];
+    //   });
+    // }
+
     function addNote(inputText){
-        setnoteItems((prevnoteItems) => {
-            return [...noteItems, inputText];
+      if(inputText.image){
+        const fileURL = URL.createObjectURL(inputText.image);
+        setnoteItems(prevnoteItems => {
+          return [...prevnoteItems, {...inputText, fileURL}];
         });
+      }else{
+        setnoteItems(prevnoteItems => {
+          return [...prevnoteItems, {...inputText}];
+        });
+      }
     }
+  
 
     function deleteNote(id){
         setnoteItems(prevnoteItems => {
@@ -34,6 +50,7 @@ function App() {
           <Note
             key={index}
             id={index}
+            fileURL={noteItem.fileURL}
             title={noteItem.title}
             content={noteItem.content}
             onPress={deleteNote}
