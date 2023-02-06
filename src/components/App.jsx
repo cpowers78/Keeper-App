@@ -7,7 +7,9 @@ import CreateArea from "./CreateArea"
 
 
 
+
 function App() {
+
     const [noteItems, setnoteItems] = useState([]);
 
     // function addNote(inputText){
@@ -29,6 +31,8 @@ function App() {
         });
       }
     }
+
+
   
 
     function deleteNote(id){
@@ -40,6 +44,12 @@ function App() {
             );
         });
     }
+
+
+    
+  
+
+
   
     return (
     <div>

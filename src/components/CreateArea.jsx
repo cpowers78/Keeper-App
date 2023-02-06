@@ -66,9 +66,6 @@ function CreateArea(props) {
           <Fab onClick={submitNote}><AddCircleOutlineIcon /></Fab>
         </Zoom>
       </form>
-      <button>
-
-      </button>
     </div>
   );
 }
